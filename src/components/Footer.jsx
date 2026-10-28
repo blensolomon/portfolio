@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="border-t border-white/5 py-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 text-xs uppercase tracking-[0.2em] text-zinc-600 sm:flex-row sm:px-8">
         <p>© {year} Blen Solomon</p>
-        <a href="#top" className="transition-colors hover:text-accent">
+        <a href="#top" className="nav-link transition-colors hover:text-accent">
           Back to top ↑
         </a>
       </div>

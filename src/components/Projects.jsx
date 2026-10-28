@@ -1,4 +1,5 @@
 import Icon from "./icons";
+import Reveal from "./Reveal";
 import { projects } from "../data";
 
 const tileGradients = [
@@ -10,70 +11,73 @@ const tileGradients = [
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-28 sm:px-8">
-      <h2 className="display-xl text-center text-white text-[clamp(2.8rem,9vw,7rem)]">
-        Projects
-      </h2>
+      <Reveal>
+        <h2 className="display-xl text-center text-white text-[clamp(2.8rem,9vw,7rem)]">
+          Projects
+        </h2>
+      </Reveal>
 
       <div className="mt-14 space-y-8">
         {projects.map((p, i) => (
-          <article
-            key={p.client}
-            className="sticky overflow-hidden rounded-[2rem] border border-line bg-surface-raised"
-            style={{ top: `${88 + i * 44}px` }}
-          >
-            <div className="flex items-center justify-between gap-4 px-6 pt-6 sm:px-10 sm:pt-8">
-              <div className="flex items-baseline gap-4">
-                <span className="display-xl text-4xl text-white/90 sm:text-5xl">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-                    Client
-                  </p>
-                  <h3 className="font-display text-lg uppercase text-white sm:text-xl">
-                    {p.client}
-                  </h3>
+          <Reveal key={p.client} amount={0.15}>
+            <article
+              className="sticky overflow-hidden rounded-[2rem] border border-line bg-surface-raised transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-[0_24px_80px_-20px_rgba(242,167,195,0.22)]"
+              style={{ top: `${88 + i * 44}px` }}
+            >
+              <div className="flex items-center justify-between gap-4 px-6 pt-6 sm:px-10 sm:pt-8">
+                <div className="flex items-baseline gap-4">
+                  <span className="display-xl text-4xl text-white/90 sm:text-5xl">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+                      Client
+                    </p>
+                    <h3 className="font-display text-lg uppercase text-white sm:text-xl">
+                      {p.client}
+                    </h3>
+                  </div>
                 </div>
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-gradient inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider sm:px-6 sm:py-2.5"
+                >
+                  Live project
+                  <Icon name="arrow" stroke className="h-3.5 w-3.5" />
+                </a>
               </div>
-              <a
-                href={p.link}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-gradient inline-flex items-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-wider sm:px-6 sm:py-2.5"
-              >
-                Live project
-                <Icon name="arrow" stroke className="h-3.5 w-3.5" />
-              </a>
-            </div>
 
-            <p className="max-w-2xl px-6 pt-4 text-sm leading-relaxed text-zinc-400 sm:px-10">
-              <span className="font-semibold text-zinc-200">{p.title} — </span>
-              {p.description}
-            </p>
+              <p className="max-w-2xl px-6 pt-4 text-sm leading-relaxed text-zinc-400 sm:px-10">
+                <span className="font-semibold text-zinc-200">{p.title} — </span>
+                {p.description}
+              </p>
 
-            <div className="grid gap-3 p-6 sm:grid-cols-3 sm:p-10 sm:pt-6">
-              <img
-                src={p.image}
-                alt={`${p.client} — ${p.title}`}
-                loading="lazy"
-                className="h-52 w-full rounded-2xl border border-line object-cover sm:col-span-2 sm:h-64"
-              />
-              <div className="grid grid-rows-2 gap-3">
+              <div className="grid gap-3 p-6 sm:grid-cols-3 sm:p-10 sm:pt-6">
                 <img
                   src={p.image}
-                  alt=""
-                  aria-hidden="true"
+                  alt={`${p.client} — ${p.title}`}
                   loading="lazy"
-                  className="h-24 w-full rounded-2xl border border-line object-cover object-bottom sm:h-full"
+                  className="h-52 w-full rounded-2xl border border-line object-cover sm:col-span-2 sm:h-64"
                 />
-                <div
-                  className={`flex h-24 items-center justify-center rounded-2xl bg-gradient-to-br sm:h-full ${tileGradients[i % tileGradients.length]}`}
-                >
-                  <Icon name="bolt" className="h-8 w-8 text-black/50" />
+                <div className="grid grid-rows-2 gap-3">
+                  <img
+                    src={p.image}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    className="h-24 w-full rounded-2xl border border-line object-cover object-bottom sm:h-full"
+                  />
+                  <div
+                    className={`flex h-24 items-center justify-center rounded-2xl bg-gradient-to-br sm:h-full ${tileGradients[i % tileGradients.length]}`}
+                  >
+                    <Icon name="bolt" className="h-8 w-8 text-black/50" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </Reveal>
         ))}
       </div>
     </section>

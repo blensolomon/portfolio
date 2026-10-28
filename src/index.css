@@ -11,9 +11,6 @@
   --color-line: #232329;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   background-color: #0a0a0f;
@@ -32,7 +29,10 @@ body {
 }
 .btn-gradient:hover {
   filter: brightness(1.08);
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.04);
+}
+.btn-gradient:active {
+  transform: scale(0.96);
 }
 
 .display-xl {
@@ -40,4 +40,43 @@ body {
   text-transform: uppercase;
   letter-spacing: -0.01em;
   line-height: 0.92;
+}
+
+/* Animated link underline */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 1px;
+  width: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Ambient floating gradient blobs */
+@keyframes aurora-1 {
+  0%, 100% { transform: translate3d(-6%, -4%, 0) scale(1); }
+  50% { transform: translate3d(10%, 7%, 0) scale(1.2); }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate3d(6%, 6%, 0) scale(1.1); }
+  50% { transform: translate3d(-9%, -6%, 0) scale(0.95); }
+}
+.animate-aurora-1 { animation: aurora-1 18s ease-in-out infinite; }
+.animate-aurora-2 { animation: aurora-2 22s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora-1,
+  .animate-aurora-2 {
+    animation: none;
+  }
 }

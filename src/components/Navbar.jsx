@@ -34,7 +34,7 @@ export default function Navbar() {
             <li key={l.name}>
               <a
                 href={l.href}
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 transition-colors hover:text-accent"
+                className="nav-link text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 transition-colors hover:text-accent"
               >
                 {l.name}
               </a>
@@ -59,7 +59,7 @@ export default function Navbar() {
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block py-3 text-sm font-semibold uppercase tracking-[0.2em] text-zinc-300 transition-colors hover:text-accent"
+                className="nav-link block py-3 text-sm font-semibold uppercase tracking-[0.2em] text-zinc-300 transition-colors hover:text-accent"
               >
                 {l.name}
               </a>

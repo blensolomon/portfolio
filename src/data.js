@@ -19,18 +19,21 @@ export const services = [
     title: "Web Development",
     description:
       "Fast, responsive websites and web apps built with React and modern tooling — from landing pages to full products.",
+    level: 92,
     skills: ["React", "JavaScript", "TypeScript", "Tailwind CSS", "Node.js", "Git & GitHub"],
   },
   {
     title: "Video Editing",
     description:
       "Promos, social cuts and motion graphics edited to hold attention — story, pacing, sound and color all dialed in.",
+    level: 88,
     skills: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Motion Graphics", "Color Grading"],
   },
   {
     title: "AI Automation",
     description:
       "Workflows that connect your tools and remove repetitive work — lead capture, qualification, follow-ups and reporting on autopilot.",
+    level: 85,
     skills: ["n8n", "Zapier", "Make", "OpenAI / LLMs", "Chatbots", "Python"],
   },
 ];
@@ -60,4 +63,10 @@ export const projects = [
     image: "/projects/project-3.svg",
     link: "https://github.com/blensolomon",
   },
+];
+
+export const stats = [
+  { value: 3, suffix: "+", label: "Years Experience" },
+  { value: 20, suffix: "+", label: "Projects Delivered" },
+  { value: 10, suffix: "+", label: "Automations Built" },
 ];
