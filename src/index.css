@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Archivo Black", "Arial Black", ui-sans-serif, sans-serif;
+
+  --color-accent: #f2a7c3;
+  --color-accent-strong: #ec7fa8;
+  --color-surface: #0e0e13;
+  --color-surface-raised: #14141b;
+  --color-line: #232329;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0f;
+  color: #d6d6de;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(242, 167, 195, 0.3);
+}
+
+.btn-gradient {
+  background: linear-gradient(92deg, #f6a5c9 0%, #c084fc 55%, #f9b487 100%);
+  color: #0a0a0f;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.btn-gradient:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+}
