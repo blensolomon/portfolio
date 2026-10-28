@@ -44,7 +44,9 @@ export const projects = [
     title: "E-commerce Storefront",
     description:
       "A fast, conversion-focused storefront built with React and Tailwind — product filtering, cart state, and a headless CMS so the client updates inventory without touching code.",
-    image: "/projects/project-1.svg",
+    image: "/projects/shoplite-main.jpg",
+    imageA: "/projects/shoplite-a.jpg",
+    imageB: "/projects/shoplite-b.jpg",
     link: "https://github.com/blensolomon",
   },
   {
@@ -52,7 +54,9 @@ export const projects = [
     title: "Brand Video Campaign",
     description:
       "End-to-end edit of a 60-second product launch promo: storyboard, motion graphics, sound design and color grade — delivered in 16:9, 1:1 and 9:16 cuts.",
-    image: "/projects/project-2.svg",
+    image: "/projects/promo-main.jpg",
+    imageA: "/projects/promo-a.jpg",
+    imageB: "/projects/promo-b.jpg",
     link: "https://youtube.com/@blensolomon",
   },
   {
@@ -60,7 +64,9 @@ export const projects = [
     title: "AI Lead Automation",
     description:
       "An n8n + LLM pipeline that captures inbound leads, qualifies them with AI, drafts personalized replies and syncs to the CRM — saving ~10 hours a week.",
-    image: "/projects/project-3.svg",
+    image: "/projects/leadflow-main.jpg",
+    imageA: "/projects/leadflow-a.jpg",
+    imageB: "/projects/leadflow-b.jpg",
     link: "https://github.com/blensolomon",
   },
 ];

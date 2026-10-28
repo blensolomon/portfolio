@@ -2,22 +2,23 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CursorGlow() {
-  const [enabled, setEnabled] = useState(false);
+  const [enabled] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches
+  );
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const glowX = useSpring(x, { stiffness: 250, damping: 28, mass: 0.6 });
   const glowY = useSpring(y, { stiffness: 250, damping: 28, mass: 0.6 });
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    setEnabled(true);
+    if (!enabled) return;
     const move = (e) => {
       x.set(e.clientX);
       y.set(e.clientY);
     };
     window.addEventListener("mousemove", move, { passive: true });
     return () => window.removeEventListener("mousemove", move);
-  }, [x, y]);
+  }, [x, y, enabled]);
 
   if (!enabled) return null;
 

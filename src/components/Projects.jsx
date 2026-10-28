@@ -2,12 +2,6 @@ import Icon from "./icons";
 import Reveal from "./Reveal";
 import { projects } from "../data";
 
-const tileGradients = [
-  "from-pink-400/80 via-fuchsia-400/70 to-orange-300/80",
-  "from-violet-400/80 via-purple-400/70 to-pink-300/80",
-  "from-sky-400/80 via-indigo-400/70 to-violet-300/80",
-];
-
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-28 sm:px-8">
@@ -63,17 +57,17 @@ export default function Projects() {
                 />
                 <div className="grid grid-rows-2 gap-3">
                   <img
-                    src={p.image}
-                    alt=""
-                    aria-hidden="true"
+                    src={p.imageA}
+                    alt={`${p.client} — detail 1`}
                     loading="lazy"
-                    className="h-24 w-full rounded-2xl border border-line object-cover object-bottom sm:h-full"
+                    className="h-24 w-full rounded-2xl border border-line object-cover sm:h-full"
                   />
-                  <div
-                    className={`flex h-24 items-center justify-center rounded-2xl bg-gradient-to-br sm:h-full ${tileGradients[i % tileGradients.length]}`}
-                  >
-                    <Icon name="bolt" className="h-8 w-8 text-black/50" />
-                  </div>
+                  <img
+                    src={p.imageB}
+                    alt={`${p.client} — detail 2`}
+                    loading="lazy"
+                    className="h-24 w-full rounded-2xl border border-line object-cover sm:h-full"
+                  />
                 </div>
               </div>
             </article>

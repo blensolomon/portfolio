@@ -9,17 +9,19 @@ export default function Typewriter({ className }) {
 
   useEffect(() => {
     const word = phrases[index];
-    let timer;
-    if (!deleting && text.length < word.length) {
-      timer = setTimeout(() => setText(word.slice(0, text.length + 1)), 70);
-    } else if (!deleting) {
-      timer = setTimeout(() => setDeleting(true), 1600);
-    } else if (text.length > 0) {
-      timer = setTimeout(() => setText(word.slice(0, text.length - 1)), 38);
-    } else {
-      setDeleting(false);
-      setIndex((index + 1) % phrases.length);
-    }
+    const delay = deleting ? 38 : text.length === word.length ? 1600 : 70;
+    const timer = setTimeout(() => {
+      if (!deleting && text.length < word.length) {
+        setText(word.slice(0, text.length + 1));
+      } else if (!deleting) {
+        setDeleting(true);
+      } else if (text.length > 0) {
+        setText(word.slice(0, text.length - 1));
+      } else {
+        setDeleting(false);
+        setIndex((index + 1) % phrases.length);
+      }
+    }, delay);
     return () => clearTimeout(timer);
   }, [text, deleting, index]);
 
