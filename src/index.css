@@ -80,3 +80,9 @@ body {
     animation: none;
   }
 }
+
+/* Hollow display text (footer name) */
+.outline-text {
+  -webkit-text-stroke: 2px #d8d8e2;
+  color: transparent;
+}
