@@ -9,15 +9,33 @@ const inputCls =
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
-    const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `Portfolio inquiry from ${form.name}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -120,13 +138,26 @@ export default function Contact() {
               </label>
               <button
                 type="submit"
-                className="btn-gradient mt-6 w-full rounded-full py-3 text-sm font-bold uppercase tracking-wider"
+                disabled={status === "sending"}
+                className="btn-gradient mt-6 w-full rounded-full py-3 text-sm font-bold uppercase tracking-wider disabled:opacity-60"
               >
-                Send message
+                {status === "sending" ? "Sending…" : "Send message"}
               </button>
-              <p className="mt-3 text-center text-xs text-zinc-600">
-                Opens your email client — no data is stored.
-              </p>
+              {status === "sent" && (
+                <p className="mt-3 text-center text-sm text-emerald-400">
+                  Message sent — I&apos;ll get back to you soon.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="mt-3 text-center text-sm text-red-400">
+                  Something went wrong — email me directly at {EMAIL}.
+                </p>
+              )}
+              {status === "idle" && (
+                <p className="mt-3 text-center text-xs text-zinc-600">
+                  Goes straight to my inbox — I get notified instantly.
+                </p>
+              )}
             </form>
           </Reveal>
         </div>
