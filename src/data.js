@@ -1,4 +1,6 @@
 export const EMAIL = "blusol845@gmail.com";
+export const PHONE = "0947654841";
+export const LOCATION = "Addis Abeba, Tuludimitu";
 
 export const navLinks = [
   { name: "About", href: "#about" },
@@ -8,10 +10,10 @@ export const navLinks = [
 ];
 
 export const socials = [
-  { name: "GitHub", href: "https://github.com/blensolomon", icon: "github" },
+  { name: "Instagram", href: "https://www.instagram.com/blensolomon", icon: "instagram" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/blensolomon", icon: "linkedin" },
-  { name: "X", href: "https://x.com/blensolomon", icon: "x" },
-  { name: "YouTube", href: "https://www.youtube.com/@blensolomon", icon: "youtube" },
+  { name: "GitHub", href: "https://github.com/blensolomon", icon: "github" },
+  { name: "Behance", href: "https://www.behance.net/blensolomon", icon: "behance" },
 ];
 
 export const services = [

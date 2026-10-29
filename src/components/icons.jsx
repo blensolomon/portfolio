@@ -10,12 +10,21 @@ const paths = {
   code: "M8.7 6.3 3 12l5.7 5.7 1.4-1.4L5.8 12l4.3-4.3-1.4-1.4Zm6.6 0-1.4 1.4 4.3 4.3-4.3 4.3 1.4 1.4L21 12l-5.7-5.7Z",
   film: "M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v2h2V6H4Zm4 0v12h8V6H8Zm10 0v2h2V6h-2ZM4 10v4h2v-4H4Zm14 0v4h2v-4h-2ZM4 16v2h2v-2H4Zm14 0v2h2v-2h-2Z",
   bolt: "M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2Z",
+  instagram:
+    "M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.9s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.9-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.9s0-3.6.1-4.9c.1-3.2 1.7-4.8 4.9-4.9 1.3-.1 1.6-.1 4.9-.1ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.2-9.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z",
   arrow: "M5 12h14m-6-6 6 6-6 6",
   menu: "M4 7h16M4 12h16M4 17h16",
   close: "M6 6l12 12M18 6 6 18",
 };
 
 export default function Icon({ name, className = "w-5 h-5", stroke = false }) {
+  if (name === "behance") {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+        <text x="12" y="16.5" fontSize="10.5" fontWeight="700" textAnchor="middle" fontFamily="sans-serif">Bé</text>
+      </svg>
+    );
+  }
   const d = paths[name];
   if (!d) return null;
   return stroke ? (
