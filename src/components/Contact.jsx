@@ -33,28 +33,24 @@ export default function Contact() {
           <Reveal delay={0.1}>
             <div>
               <h3 className="font-display text-4xl leading-[1.05] text-white sm:text-6xl">
-                <span className="block overflow-hidden">
-                  <motion.span
-                    className="block"
-                    initial={{ y: "110%" }}
-                    whileInView={{ y: "0%" }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    Let&apos;s build
-                  </motion.span>
-                </span>
-                <span className="block overflow-hidden">
-                  <motion.span
-                    className="block text-accent"
-                    initial={{ y: "110%" }}
-                    whileInView={{ y: "0%" }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    together
-                  </motion.span>
-                </span>
+                <motion.span
+                  className="block"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  Let&apos;s build
+                </motion.span>
+                <motion.span
+                  className="block text-accent"
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  together
+                </motion.span>
               </h3>
 
               <a
