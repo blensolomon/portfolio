@@ -12,10 +12,11 @@ export const navLinks = [
 ];
 
 export const socials = [
-  { name: "Instagram", href: "https://www.instagram.com/blensolomon", icon: "instagram" },
+  { name: "Instagram", href: "https://www.instagram.com/blu_sol", icon: "instagram" },
+  { name: "TikTok", href: "https://www.tiktok.com/@blu_sol97", icon: "tiktok" },
+  { name: "Telegram", href: "https://t.me/bLUJD", icon: "telegram" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/blensolomon", icon: "linkedin" },
   { name: "GitHub", href: "https://github.com/blensolomon", icon: "github" },
-  { name: "Behance", href: "https://www.behance.net/blensolomon", icon: "behance" },
 ];
 
 export const services = [
