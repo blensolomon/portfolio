@@ -32,7 +32,7 @@ export default function Contact() {
         <div className="mt-14 grid gap-12 md:grid-cols-2 md:items-start">
           <Reveal delay={0.1}>
             <div>
-              <h3 className="font-display text-4xl leading-[1.05] text-white sm:text-6xl">
+              <h3 className="font-display text-5xl leading-[1.05] text-white sm:text-7xl lg:text-8xl">
                 <motion.span
                   className="block"
                   initial={{ opacity: 0, y: 50 }}
