@@ -1,5 +1,5 @@
-import { lazy, Suspense } from "react";
-import { motion } from "framer-motion";
+import { lazy, Suspense, useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import Icon from "./icons";
 import Typewriter from "./Typewriter";
 import { socials } from "../data";
@@ -16,6 +16,57 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
 };
 
+function Portrait3D() {
+  const ref = useRef(null);
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springX = useSpring(rotateX, { stiffness: 150, damping: 18 });
+  const springY = useSpring(rotateY, { stiffness: 150, damping: 18 });
+
+  const onMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    rotateY.set(px * 18);
+    rotateX.set(-py * 14);
+  };
+
+  const onMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      style={{ perspective: 900 }}
+      className="relative z-10 mx-auto -mt-6 sm:-mt-20"
+    >
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 60, scale: 0.95 },
+          show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+        }}
+        style={{ rotateX: springX, rotateY: springY, transformStyle: "preserve-3d" }}
+      >
+        <motion.img
+          src="/portrait-nobg.webp"
+          alt="Blen Solomon"
+          animate={{ y: [0, -12, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="h-80 w-auto sm:h-[26rem] lg:h-[30rem]"
+          style={{
+            filter:
+              "drop-shadow(0 24px 50px rgba(236,127,168,0.30)) drop-shadow(0 10px 20px rgba(0,0,0,0.55))",
+          }}
+        />
+      </motion.div>
+    </div>
+  );
+}
+
 export default function Hero() {
   return (
     <section id="top" className="relative flex min-h-screen flex-col overflow-hidden">
@@ -29,7 +80,7 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 pb-20 pt-28 sm:px-8"
+        className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 pb-16 pt-28 sm:px-8"
       >
         <motion.h1
           variants={item}
@@ -56,21 +107,9 @@ export default function Hero() {
           </motion.a>
         </div>
 
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 60, scale: 0.95 },
-            show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
-          }}
-          className="relative z-10 mx-auto -mt-4 sm:-mt-14"
-        >
-          <img
-            src="/portrait.jpg"
-            alt="Blen Solomon"
-            className="h-72 w-64 rounded-t-full border border-white/15 object-cover object-top shadow-2xl shadow-pink-500/10 sm:h-80 sm:w-72"
-          />
-        </motion.div>
+        <Portrait3D />
 
-        <motion.div variants={item} className="mt-8 flex items-center justify-center gap-5">
+        <motion.div variants={item} className="mt-6 flex items-center justify-center gap-5">
           {socials.map((s) => (
             <a
               key={s.name}
