@@ -1,6 +1,4 @@
 export const EMAIL = "blusol845@gmail.com";
-export const PHONE = "0947654841";
-export const LOCATION = "Addis Abeba, Tuludimitu";
 
 export const navLinks = [
   { name: "About", href: "#about" },

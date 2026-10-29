@@ -7,8 +7,6 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import GetInTouch from "./components/GetInTouch";
-import Footer from "./components/Footer";
 import Preloader from "./components/Preloader";
 import ScrollProgress from "./components/ScrollProgress";
 import CursorGlow from "./components/CursorGlow";
@@ -50,9 +48,7 @@ export default function App() {
           <Services />
           <Projects />
           <Contact />
-        <GetInTouch />
         </main>
-        <Footer />
       </div>
     </MotionConfig>
   );

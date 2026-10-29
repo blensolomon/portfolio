@@ -1,23 +1,9 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Bungee";
-  src: url("/fonts/bungee-latin-400-normal.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Bungee Outline";
-  src: url("/fonts/bungee-outline-latin-400-normal.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
 
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Archivo Black", "Arial Black", ui-sans-serif, sans-serif;
-  --font-bungee: "Bungee", "Archivo Black", sans-serif;
-  --font-bungee-outline: "Bungee Outline", "Bungee", "Archivo Black", sans-serif;
 
   --color-accent: #f2a7c3;
   --color-accent-strong: #ec7fa8;
@@ -96,8 +82,3 @@ body {
   }
 }
 
-/* Hollow display text (footer name) */
-.outline-text {
-  -webkit-text-stroke: 2px #d8d8e2;
-  color: transparent;
-}
