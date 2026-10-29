@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Icon from "./icons";
 import Reveal from "./Reveal";
 import { EMAIL, socials } from "../data";
@@ -31,10 +32,30 @@ export default function Contact() {
         <div className="mt-14 grid gap-12 md:grid-cols-2 md:items-start">
           <Reveal delay={0.1}>
             <div>
-              <p className="leading-relaxed text-zinc-400">
-                Have a site to build, a video to cut, or a workflow to automate?
-                Send a message — I usually reply within a day.
-              </p>
+              <h3 className="font-display text-4xl leading-[1.05] text-white sm:text-6xl">
+                <span className="block overflow-hidden">
+                  <motion.span
+                    className="block"
+                    initial={{ y: "110%" }}
+                    whileInView={{ y: "0%" }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    Let&apos;s build
+                  </motion.span>
+                </span>
+                <span className="block overflow-hidden">
+                  <motion.span
+                    className="block text-accent"
+                    initial={{ y: "110%" }}
+                    whileInView={{ y: "0%" }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    together
+                  </motion.span>
+                </span>
+              </h3>
 
               <a
                 href={`mailto:${EMAIL}`}
