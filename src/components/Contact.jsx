@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Icon from "./icons";
 import Reveal from "./Reveal";
-import { EMAIL, socials } from "../data";
+import { EMAIL, WEB3FORMS_KEY, socials } from "../data";
 
 const inputCls =
   "w-full rounded-xl border border-line bg-[#0c0c12] px-4 py-3 text-sm text-zinc-200 placeholder-zinc-600 outline-none transition-colors focus:border-accent/60 focus:ring-2 focus:ring-accent/20";
@@ -18,19 +18,34 @@ export default function Contact() {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-          _subject: `Portfolio inquiry from ${form.name}`,
-          _template: "table",
-          _captcha: "false",
-        }),
-      });
+      const res = WEB3FORMS_KEY
+        ? await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              access_key: WEB3FORMS_KEY,
+              subject: `Portfolio inquiry from ${form.name}`,
+              from_name: "Portfolio contact form",
+              name: form.name,
+              email: form.email,
+              message: form.message,
+            }),
+          })
+        : await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              name: form.name,
+              email: form.email,
+              message: form.message,
+              _subject: `Portfolio inquiry from ${form.name}`,
+              _template: "table",
+              _captcha: "false",
+            }),
+          });
       if (!res.ok) throw new Error("send failed");
+      const data = await res.json().catch(() => ({}));
+      if (data.success === false) throw new Error("send failed");
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
     } catch {

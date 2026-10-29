@@ -1,5 +1,9 @@
 export const EMAIL = "blusol845@gmail.com";
 
+// Paste your free Web3Forms access key here (get it at https://web3forms.com
+// by entering blusol845@gmail.com — they email you the key instantly).
+export const WEB3FORMS_KEY = "";
+
 export const navLinks = [
   { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
