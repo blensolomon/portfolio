@@ -41,6 +41,20 @@ export const services = [
     level: 85,
     skills: ["n8n", "Zapier", "Make", "OpenAI / LLMs", "Chatbots", "Python"],
   },
+  {
+    title: "Social Media Management",
+    description:
+      "Growing your presence across Instagram and TikTok — content calendars, posting schedules, engagement and analytics that turn followers into clients.",
+    level: 86,
+    skills: ["Content Strategy", "Scheduling", "Analytics", "Instagram", "TikTok", "Community"],
+  },
+  {
+    title: "Script Writing",
+    description:
+      "Scripts built to hold attention — strong hooks, clean structure and pacing for promos, shorts and YouTube videos that keep people watching.",
+    level: 90,
+    skills: ["Hooks & Story", "YouTube Scripts", "Ad Copy", "Storyboarding"],
+  },
 ];
 
 export const projects = [
